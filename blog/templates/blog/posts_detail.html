@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% block title %} home {% endblock %}
+
+{% block body %}
+   <img class="rounded-circle" src="{{ post.author.profile.image.url }}">
+   {{ post.author }}  {{ post.date_post |date }}
+  <p>{{ post.subject }}</p>
+  {% if post.author == user %}
+    <div>
+      <a class="btn btn-primary" href="{% url 'blog:update' post.id %}">Update</a>
+       <a class="btn btn-danger" href="{% url 'blog:delete' post.id %}">Delete</a>
+    </div>
+  {% endif %}
+{% endblock %}

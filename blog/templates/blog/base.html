@@ -1,0 +1,97 @@
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- fontawosme css-->
+	<link href="{% static 'blog/css/all.css' %}" rel="stylesheet">
+	<!-- fontawosme icon css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- google font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- custom css -->
+	<link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <title>{% block title %} {% endblock %}</title>
+
+</head>
+<body>
+<!-- navigation -->
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  		<div class="container-fluid">
+  			<a class="navbar-brand" href="{% url 'blog:home' %}">Abdelgayoom</a>
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsvie">
+  				<span class="navbar-toggler-icon"></span>
+  			</button>
+  			<div class="collapse navbar-collapse" id="navbarResponsvie">
+  				<ul class="navbar-nav ml-auto">
+  					<li class="nav-item">
+  						<a class="nav-link active" href="{% url 'blog:home' %}"><i style="font-size:24px" class="fa">&#xf015;</i> Home</a>
+  					</li>
+  					<li class="nav-item">
+  						<a class="nav-link" href="{% url 'blog:contact' %}"><i style="font-size:24px" class="fa">&#xf003;</i> Contact</a>
+  					</li>
+				{% if user.is_authenticated %}
+					<li class="nav-item">
+  						<a class="nav-link" href="{% url 'blog:create' %}"><i style="font-size:24px" class="fa">&#xf0fe;</i> New Post</a>
+  					</li>
+					<li class="nav-item">
+  						<a class="nav-link" href="{% url 'users:profile' %}"><i style="font-size:24px" class="fa">&#xf2b9;</i> Profile</a>
+  					</li>
+					<li class="nav-item">
+  						<a class="nav-link" href="{% url 'users:logout' %}"><i style="font-size:24px" class="fa">&#xf011;</i> Logout</a>
+  					</li>
+				{% else %}
+					<li class="nav-item">
+  						<a class="nav-link" href="{% url 'users:login' %}"><i style="font-size:24px" class="fa">&#xf192;</i> Login</a>
+  					</li>
+					<li class="nav-item">
+  						<a class="nav-link" href="{% url 'users:register' %}"><i style="font-size:24px" class="fa">&#xf234;</i>   Register</a>
+  					</li>
+				{% endif %}
+  				</ul>
+  			</div>
+  		</div>
+  	</nav>
+<!-- flash messages -->
+<div class="container-fluid">
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert-{{ message.tags}}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+
+    {% block body %}
+    {% endblock %}
+
+</div>
+<!-- Footer -->
+    <footer class="py-5 bg-dark mb-0 footer" id="sticky-footer">
+		<div class="container">
+			<small>
+			   <p class="m-0 text-center text-white">
+				   <a href="#" style="color:white"><i style="font-size:24px" class="fa">&#xf082;</i></a>
+				   <a href="#"style="color:white"><i style="font-size:24px" class="fa">&#xf081;</i></a>
+				   <a href="#"style="color:white"><i style="font-size:24px" class="fa">&#xf09b;</i></a>
+				   <a href="#"style="color:white"><i style="font-size:24px" class="fa">&#xf08c;</i></a>
+				 </p>
+				<small><p class="m-0 text-center text-white">Copyright &copy; Abdelgayoom 2020</p></small>
+			</small>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
+

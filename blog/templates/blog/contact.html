@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{% block title %} Contact {% endblock %}
+
+{% block body %}
+<!--
+<div class="container content-center">
+    <h5 class="text-center"> contact us by sending email </h5>
+
+    <form method="post" enctype="text/plain">
+        {% csrf_token %}
+        <ul>
+            {% for field in form %}
+                <div class="form-group">
+                    <small class="text-danger">{{ field.errors }}</small>
+                    <div class="form-group">
+                    {{ field.label }} {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="send" class="btn btn-primary">
+    </form>
+</div>
+-->
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Send Us Email</h5>
+                    <form class="form-signin" role="form" action="{% url 'blog:contact' %}" method="post" enctype="text/plain">
+                        {% csrf_token %}
+                            <div class="form-label-group">
+                                 <input type="text" id="id_subject" name="subject" placeholder="Subject.." required>
+                                <label for="id_subject">Subject</label>
+
+                            </div>
+                            <div class="form-label-group">
+                                <textarea id="id_message" name="message" placeholder="Your message ..." style="height:200px" required></textarea>
+                            </div>
+                            <div class="form-label-group">
+                                 <input type="text" id="id_email" name="subject" placeholder="Email address.." required>
+                                <label for="id_email">Email Address</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-primary ">Submit</button>
+                    </form>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block title %} Profile update {% endblock %}
+
+{% block body %}
+<p> edit your profile info </p>
+<form method="post" enctype="multipart/form-data">
+ {% csrf_token %}
+ <table>
+     {{ u_form.as_table }}
+     {{ p_form.as_table }}
+  </table>
+<input type="submit" value="Update">
+</form>
+
+
+{% endblock %}

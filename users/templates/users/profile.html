@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block title %} profile {% endblock %}
+
+{% block body %}
+
+    <img class="rounded-circle" src="{{ user.profile.image.url }}"> {{ user.username }}<br>
+    {{ user.profile.bio }}
+<p><a href="{% url 'users:profile_update' %}">Update your Profile</a></p>
+<p><a href="{% url 'users:password_change' %}">Change Your Password</a></p>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% block title %} profile {% endblock %}
+
+{% block body %}
+
+    <img class="rounded-circle" src="{{ user.profile.image.url }}"> {{ user.username }}<br>
+    {{ user.profile.bio }}
+
+{% endblock %}
