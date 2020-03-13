@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block title %} comment update {% endblock %}
+
+{% block body %}
+
+    <form method="post">{% csrf_token %}
+         <table>
+         {{ form.as_table }}
+          </table>
+        <input class="btn btn-outline-info" type="submit" value='Update Comment'>
+    </form>
+
+{% endblock %}

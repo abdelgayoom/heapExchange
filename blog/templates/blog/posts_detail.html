@@ -2,20 +2,31 @@
 {% block title %} home {% endblock %}
 
 {% block body %}
-   <img class="rounded-circle" src="{{ post.author.profile.image.url }}">
-   {{ post.author }}  {{ post.date_post |date }}
+   <a href="{% url 'blog:user_posts' post.author.username %}"><img class="rounded-circle" src="{{ post.author.profile.image.url }}"></a>
+<a href="{% url 'blog:user_posts' post.author.username %}">{{ post.author }}</a>  {{ post.date_post |date }}
   <p>{{ post.subject }}</p>
 <hr>
     <p> <small>  {{ post.comments.count }} comments </small></p>
   <ul>
       {% for comment in post.comments.all %}
-           <img class="rounded-circle" src="{{ comment.user.profile.image.url }}">
-          {{ comment.user.username }} {{ comment.date_comment | date }}
-          <p>{{ comment }}</p>
+           <a href="{% url 'blog:user_posts' comment.user.username %}"><img class="rounded-circle" src="{{ comment.user.profile.image.url }}"></a>
+           <a href="{% url 'blog:user_posts' comment.user.username %}">{{ comment.user.username }}</a> {{ comment.date_comment | date }}
+           <p>{{ comment }}</p>
+
+           {% if comment.user == user %}
+                <div>
+                 <small>
+                     <a class="btn btn-outline-info" href="{% url 'blog:update_comment' comment.pk %}">Edit</a>
+                   <a class="btn btn-outline-danger" href="{% url 'blog:delete_comment' comment.pk %}">Delete </a>
+                 </small>
+                </div>
+           {% endif %}
+
       {% empty %}
-            <h5> there is no comments yet </h5>
+            <h6> there is no comments yet </h6>
       {% endfor%}
   </ul>
+
 
   {% if user.is_authenticated %}
     <form method="post">{% csrf_token %}

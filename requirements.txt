@@ -1,6 +1,2 @@
-
 Django
 Pillow
-pytz
-request
-urllib3

@@ -5,14 +5,16 @@
 <div class="container-fluid"></div>
     <ul>
         {% for post in post %}
-    </ul>
-    <ul><img class="rounded-circle" src="{{ post.author.profile.image.url }}">
-        <a href="{% url 'blog:user_posts' post.author.username  %}">{{ post.author }}</a>
-        <small>{{ post.date_post |date }}</small>
-        <p>
-            <a href="{% url 'blog:detail' post.pk %}">{{ post.title }} </a>
-        <li>{{ post.subject }}</li>
-        </p>
+
+            <a href="{% url 'blog:user_posts' post.author.username %}"><img class="rounded-circle" src="{{ post.author.profile.image.url }}"></a>
+            <a href="{% url 'blog:user_posts' post.author.username  %}">{{ post.author }}</a>
+
+            <small>{{ post.date_post |date }}</small>
+
+               <p> <a href="{% url 'blog:detail' post.pk %}">{{ post.title }} </a></p>
+
+            <p>{{ post.subject }}</p>
+
 
         {% endfor %}
     </ul>

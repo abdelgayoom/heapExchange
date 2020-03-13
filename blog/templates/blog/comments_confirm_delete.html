@@ -1,11 +1,11 @@
 {% extends 'blog/base.html' %}
-{% block title %} Delete post {% endblock %}
+{% block title %} delete comment {% endblock %}
 
 {% block body %}
 
     <form method="post">
          {% csrf_token %}
-          <p>Are You Sure To Delete {{ object.title }}</p>
+          <p>are you sure to delete your comment</p>
         <input class="btn btn-outline-danger" type="submit" value=" Yes,Delete">
         <a class="btn btn-secondary" href="{% url 'blog:detail' object.id %}">No,Cancel</a>
     </form>
