@@ -5,7 +5,7 @@
    <img class="rounded-circle" src="{{ post.author.profile.image.url }}">
    {{ post.author }}  {{ post.date_post |date }}
   <p>{{ post.subject }}</p>
-
+<hr>
     <p> <small>  {{ post.comments.count }} comments </small></p>
   <ul>
       {% for comment in post.comments.all %}
@@ -24,13 +24,12 @@
           </table>
         <input class="btn btn-outline-info" type="submit" value='Add Comment'>
     </form>
-
   {% endif %}
-
+<hr/>
   {% if post.author == user %}
     <div>
-      <a class="btn btn-primary" href="{% url 'blog:update' post.id %}">Update</a>
-       <a class="btn btn-danger" href="{% url 'blog:delete' post.id %}">Delete</a>
+      <a class="btn btn-primary" href="{% url 'blog:update' post.id %}">Update Post</a>
+       <a class="btn btn-danger" href="{% url 'blog:delete' post.id %}">Delete Post</a>
     </div>
   {% endif %}
 {% endblock %}
