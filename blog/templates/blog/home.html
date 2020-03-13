@@ -13,6 +13,7 @@
             <a href="{% url 'blog:detail' post.pk %}">{{ post.title }} </a>
         <li>{{ post.subject }}</li>
         </p>
+
         {% endfor %}
     </ul>
      {% if is_paginated %}

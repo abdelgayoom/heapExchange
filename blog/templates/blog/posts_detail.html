@@ -5,6 +5,28 @@
    <img class="rounded-circle" src="{{ post.author.profile.image.url }}">
    {{ post.author }}  {{ post.date_post |date }}
   <p>{{ post.subject }}</p>
+
+    <p> <small>  {{ post.comments.count }} comments </small></p>
+  <ul>
+      {% for comment in post.comments.all %}
+           <img class="rounded-circle" src="{{ comment.user.profile.image.url }}">
+          {{ comment.user.username }} {{ comment.date_comment | date }}
+          <p>{{ comment }}</p>
+      {% empty %}
+            <h5> there is no comments yet </h5>
+      {% endfor%}
+  </ul>
+
+  {% if user.is_authenticated %}
+    <form method="post">{% csrf_token %}
+         <table>
+         {{ form.as_table }}
+          </table>
+        <input class="btn btn-outline-info" type="submit" value='Add Comment'>
+    </form>
+
+  {% endif %}
+
   {% if post.author == user %}
     <div>
       <a class="btn btn-primary" href="{% url 'blog:update' post.id %}">Update</a>

@@ -1,4 +1,12 @@
 from django import forms
+from .models import Comments
+
+
+class CommentsCreationForm(forms.ModelForm):
+
+    class Meta:
+        model = Comments
+        fields = ['comment']
 
 
 class ContactForm(forms.Form):

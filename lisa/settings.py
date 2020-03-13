@@ -26,6 +26,7 @@ with open('/etc/secret_key.json') as f:
     SecretData = json.load(f)
 
 SECRET_KEY = SecretData.get('SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
