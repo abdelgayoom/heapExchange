@@ -22,8 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-with open('/etc/secret_key.json') as f:
-    SecretData = json.load(f)
+with open('/etc/secret_key.json') as secretFile:
+    SecretData = json.load(secretFile)
 
 SECRET_KEY = SecretData.get('SECRET_KEY')
 
