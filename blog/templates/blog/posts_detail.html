@@ -35,6 +35,8 @@
           </table>
         <input class="btn btn-outline-info" type="submit" value='Add Comment'>
     </form>
+  {% else %}
+   login <a href="{% url 'users:login' %}">here</a> to add comment
   {% endif %}
 <hr/>
   {% if post.author == user %}

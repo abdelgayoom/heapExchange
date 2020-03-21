@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+{% block title %} questions detail {% endblock %}
+
+{% block body %}
+
+<a href="#">{{ question.author }}</a>  {{ question.date_asked |date }}
+  <p>{{ question.body }}</p>
+<hr>
+    <p> <small>  {{ question.answers.count }} Answers </small></p>
+  <ul>
+      {% for answer in question.answers.all %}
+           <a href="#">{{ answer.user.username }}</a> {{ answer.date_answered | date }}
+           <p>{{ answer }}</p>
+
+           {% if answer.user == user %}
+                <div>
+                 <small>
+                     <a class="btn btn-outline-info" href="{% url 'questions:update_answer' answer.pk %}">Edit</a>
+                   <a class="btn btn-outline-danger" href="{% url 'questions:delete_answer' answer.pk %}">Delete </a>
+                 </small>
+                </div>
+           {% endif %}
+
+      {% empty %}
+            <h6> there is no answers yet </h6>
+      {% endfor%}
+  </ul>
+
+
+  {% if user.is_authenticated %}
+    <form method="post">{% csrf_token %}
+         <table>
+         {{ form.as_table }}
+          </table>
+        <input class="btn btn-outline-info" type="submit" value='Add Answer'>
+    </form>
+  {% else %}
+    login <a href="{% url 'users:login' %}">here</a> to add answer
+  {% endif %}
+<hr/>
+  {% if question.author == user %}
+    <div>
+      <a class="btn btn-primary" href="{% url 'questions:update' question.pk %}">Update Question</a>
+       <a class="btn btn-danger" href="{% url 'questions:delete' question.pk %}">Delete Question</a>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -7,7 +7,7 @@ from django.utils import timezone
 class Posts(models.Model):
     title = models.CharField(max_length=20)
     subject = models.TextField()
-    date_post = models.DateTimeField(default=timezone.now())
+    date_post = models.DateTimeField(default=timezone.now, editable=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -19,7 +19,7 @@ class Posts(models.Model):
 
 class Comments(models.Model):
     posts = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
     date_comment = models.DateTimeField(auto_now_add=True, editable=False)
 
