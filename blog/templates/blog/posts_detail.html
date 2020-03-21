@@ -4,14 +4,14 @@
 {% block body %}
    <a href="{% url 'blog:user_posts' post.author.username %}"><img class="rounded-circle" src="{{ post.author.profile.image.url }}"></a>
 <a href="{% url 'blog:user_posts' post.author.username %}">{{ post.author }}</a>  {{ post.date_post |date }}
-  <p>{{ post.subject }}</p>
+  <p>{{ post.subject |safe }}</p>
 <hr>
     <p> <small>  {{ post.comments.count }} comments </small></p>
   <ul>
       {% for comment in post.comments.all %}
            <a href="{% url 'blog:user_posts' comment.user.username %}"><img class="rounded-circle" src="{{ comment.user.profile.image.url }}"></a>
            <a href="{% url 'blog:user_posts' comment.user.username %}">{{ comment.user.username }}</a> {{ comment.date_comment | date }}
-           <p>{{ comment }}</p>
+           <p>{{ comment | safe }}</p>
 
            {% if comment.user == user %}
                 <div>

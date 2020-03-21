@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Questions(models.Model):
@@ -18,7 +19,7 @@ class Questions(models.Model):
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, choices=TAG_CHOICE)
-    body = models.TextField()
+    body = RichTextField()
     date_asked = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
@@ -31,7 +32,7 @@ class Questions(models.Model):
 class Answers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_user')
     questions = models.ForeignKey(Questions, on_delete=models.CASCADE, related_name='answers')
-    body = models.TextField()
+    body = RichTextField(config_name='special')
     date_answered = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):

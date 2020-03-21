@@ -13,7 +13,7 @@
 
                <p> <a href="{% url 'blog:detail' post.pk %}">{{ post.title }} </a></p>
 
-            <p>{{ post.subject }}</p>
+            <p>{{ post.subject |safe  }}</p>
 
 
         {% endfor %}

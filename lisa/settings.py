@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,15 @@ EMAIL_PORT = SecretData.get('EMAIL_PORT')
 EMAIL_HOST_USER = SecretData.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = SecretData.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
+
+# ckeditor settings
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_ALLOW_NONIMAGE_FILES = False  # allow only image file
+CKEDITOR_CONFIGS = {'default':
+                         {'toolbar': 'Custom', 'toolbar_Custom':
+                             [['CodeSnippet'], ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+                               ['Link', 'Unlink', 'Anchor'], ['Image', 'Flash', 'Table', 'HorizontalRule'],
+                               ['TextColor', 'BGColor'], ['Smiley', 'SpecialChar'], ['Source'], ], 'extraPlugins': 'codesnippet' },
+                     'special': {'toolbar': 'Special', 'toolbar_Special': [['CodeSnippet'], ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+                               ['Link', 'Unlink', 'Anchor'], ['TextColor', 'BGColor']], 'extraPlugins': 'codesnippet' }}
+

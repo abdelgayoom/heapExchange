@@ -13,7 +13,7 @@
 
             <small>{{ question.date_asked |date }}</small>
                     <small><p>{{ question.title }}</p> </small>
-               <p> <a href="{% url 'questions:detail' question.pk %}">{{ question.body }} </a></p>
+               <p> <a href="{% url 'questions:detail' question.pk %}">{{ question.body | safe }} </a></p>
 
         {% endfor %}
     </ul>

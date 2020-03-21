@@ -11,7 +11,7 @@
               <small class="text-muted">{{ post.date_post|date:"F d, Y" }}</small>
 
             <h6><a class="article-title" href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h6>
-            <p class="article-content">{{ post.subject }}</p>
+            <p class="article-content">{{ post.subject | safe }}</p>
 
        </ul>
     {% endfor %}

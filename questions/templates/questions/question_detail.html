@@ -10,7 +10,7 @@
   <ul>
       {% for answer in question.answers.all %}
            <a href="#">{{ answer.user.username }}</a> {{ answer.date_answered | date }}
-           <p>{{ answer }}</p>
+           <p>{{ answer | safe }}</p>
 
            {% if answer.user == user %}
                 <div>
