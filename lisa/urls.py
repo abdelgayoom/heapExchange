@@ -17,16 +17,20 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from ckeditor_uploader import views
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 
 urlpatterns = [
-
 
     path('', include('blog.urls')),
     path('questions/', include('questions.urls')),
     path('user/', include('users.urls')),
     path('admin/', admin.site.urls),
     path('user/', include('django.contrib.auth.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('ckeditor/upload/', login_required(views.upload), name='ckeditor_upload'),
+    path('ckeditor/browse/', never_cache(login_required(views.browse)), name='ckeditor_browse'),
+
 
 ]
 
