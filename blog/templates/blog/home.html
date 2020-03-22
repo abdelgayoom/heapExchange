@@ -4,19 +4,20 @@
 {% block body %}
 <div class="container-fluid"></div>
     <ul>
-        {% for post in post %}
+        <div >
+            {% for post in post %}
+                    <a href="{% url 'blog:user_posts' post.author.username %}"><img class="rounded-circle" src="{{ post.author.profile.image.url }}"></a>
+                    <a href="{% url 'blog:user_posts' post.author.username  %}">{{ post.author }}</a>
 
-            <a href="{% url 'blog:user_posts' post.author.username %}"><img class="rounded-circle" src="{{ post.author.profile.image.url }}"></a>
-            <a href="{% url 'blog:user_posts' post.author.username  %}">{{ post.author }}</a>
+                    <small>{{ post.date_post |date }}</small>
 
-            <small>{{ post.date_post |date }}</small>
+                       <p> <a href="{% url 'blog:detail' post.pk %}">{{ post.title }} </a></p>
 
-               <p> <a href="{% url 'blog:detail' post.pk %}">{{ post.title }} </a></p>
+                    <p>{{ post.subject |safe  }}</p>
 
-            <p>{{ post.subject |safe  }}</p>
+            {% endfor %}
+       </div>
 
-
-        {% endfor %}
     </ul>
      {% if is_paginated %}
 

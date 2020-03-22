@@ -4,7 +4,7 @@
 {% block body %}
 
 <a href="#">{{ question.author }}</a>  {{ question.date_asked |date }}
-  <p>{{ question.body }}</p>
+  <p>{{ question.body | safe }}</p>
 <hr>
     <p> <small>  {{ question.answers.count }} Answers </small></p>
   <ul>
