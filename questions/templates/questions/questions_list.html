@@ -6,17 +6,16 @@
     <div class="text-right">
     <a class="btn btn-primary " href="{% url 'questions:new_question' %}">New Question</a>
     </div>
-    <ul>
+
         {% for question in question %}
-
-            <a href="#">{{ question.author }}</a>
-
-            <small>{{ question.date_asked |date }}</small>
-                    <small><p>{{ question.title }}</p> </small>
-               <p> <a href="{% url 'questions:detail' question.pk %}">{{ question.body | safe }} </a></p>
-
+            <div class="container" style=" background:#E1DDBC">
+                <a href="#">{{ question.author }}</a><hr/>
+                <small style="cursor: pointer; color:#65a323; background:#D5E2E4">{{ question.title }}</small>
+                <p> {{ question.body | safe }} </p>
+                <p><small> {{ question.date_asked |date }} &nbsp;&nbsp;&nbsp;<a href="{% url 'questions:detail' question.pk %}">{{ question.answers.count}} answers</a></small></p>
+            </div>
         {% endfor %}
-    </ul>
+
      {% if is_paginated %}
 
       {% if page_obj.has_previous %}
