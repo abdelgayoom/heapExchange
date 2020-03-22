@@ -3,10 +3,11 @@
 
 {% block body %}
    <a href="{% url 'blog:user_posts' post.author.username %}"><img class="rounded-circle" src="{{ post.author.profile.image.url }}"></a>
-<a href="{% url 'blog:user_posts' post.author.username %}">{{ post.author }}</a>  {{ post.date_post |date }}
+<a href="{% url 'blog:user_posts' post.author.username %}">{{ post.author }}</a>  &nbsp;&nbsp;&nbsp;{{ post.date_post |date }}
   <p>{{ post.subject |safe }}</p>
 <hr>
-    <p> <small>  {{ post.comments.count }} comments </small></p>
+
+  <p> <small>  {{ post.comments.count }} comments </small></p>
   <ul>
       {% for comment in post.comments.all %}
            <a href="{% url 'blog:user_posts' comment.user.username %}"><img class="rounded-circle" src="{{ comment.user.profile.image.url }}"></a>
@@ -45,4 +46,5 @@
        <a class="btn btn-danger" href="{% url 'blog:delete' post.id %}">Delete Post</a>
     </div>
   {% endif %}
+
 {% endblock %}
