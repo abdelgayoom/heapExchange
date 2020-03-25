@@ -3,6 +3,7 @@ html,body {
   height: 100%;
   width: 100%;
   margin: 0;
+  background-color: transparent;
 }
 
 #sticky-footer {
@@ -27,6 +28,8 @@ html,body {
 }
 
 .card-signin .card-body {
+  background-color: #303063;
+  color: white;
   padding: 2rem;
 }
 
