@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('questions/', include('questions.urls')),
     path('user/', include('users.urls')),
+    path('api/v1/', include('api.urls')),
     path('admin/', admin.site.urls),
     path('user/', include('django.contrib.auth.urls')),
     path('ckeditor/upload/', login_required(views.upload), name='ckeditor_upload'),
