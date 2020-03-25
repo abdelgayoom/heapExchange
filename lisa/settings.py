@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['192.168.43.85', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'questions.apps.QuestionsConfig',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -152,5 +154,6 @@ CKEDITOR_CONFIGS = {'default':
                                ['Link', 'Unlink', 'Anchor'], ['Image', 'Flash', 'Table', 'HorizontalRule'],
                                ['TextColor', 'BGColor'], ['Smiley', 'SpecialChar'], ['Source'], ], 'extraPlugins': 'codesnippet' },
                      'special': {'toolbar': 'Special', 'toolbar_Special': [['CodeSnippet'], ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
-                               ['Link', 'Unlink', 'Anchor'], ['TextColor', 'BGColor']], 'extraPlugins': 'codesnippet' }}
+                               ['Link', 'Unlink', 'Anchor'], ['TextColor', 'BGColor']], 'extraPlugins': 'codesnippet'}
+                    }
 
