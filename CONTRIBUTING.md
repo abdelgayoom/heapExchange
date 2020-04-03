@@ -1,9 +1,9 @@
 ## Contributing to heapExchange
 
-   ` The world can only really be changed one piece at a time. 
-   The art is picking that piece.`
+ ***   The world can only really be changed one piece at a time. 
+   The art is picking that piece.
 
-    — Tim Berners-Lee 
+    — Tim Berners-Lee ***
 
 There are many ways you can contribute to heapExchange.
  We'd like it to be a community-led project
@@ -18,7 +18,7 @@ It's also always best to make a new branch before starting work on a pull reques
 
 It's also useful to remember that if you have an outstanding pull request then pushing new commits to your GitHub repo will also automatically update the pull requests.
 
-GitHub's documentation for working on pull requests is [available here][https://help.github.com/articles/using-pull-requests].
+GitHub's documentation for working on pull requests is [available here](https://help.github.com/articles/using-pull-requests)
 
 Always run the tests before submitting pull requests, and ideally run tox in order to check that your modifications are compatible on all supported versions of Python and Django.
 
