@@ -15,10 +15,10 @@
 
 > `cd heapExchang `
 
-  `python3 -m venv venv `
+    `python3 -m venv venv `
 
-  `pip3 install -r requirements.txt `
+    `pip3 install -r requirements.txt `
 
 ## contribution
-For contribute see the CONTRIBUTION.md file
+For contribute see the [CONTRIBUTION.md](https://github.com/abdelgayoom/heapExchange/blob/master/CONTRIBUTING.md)
 
