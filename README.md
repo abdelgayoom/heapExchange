@@ -12,10 +12,11 @@
 `git clone https://github.com/abdelgayoom/heapExchange.git `
 
 ### Creating virtual  environment
-` cd heapExchang
-python3 -m venv venv
+`cd heapExchang `
 
-pip3 install -r requirements.txt `
+`python3 -m venv venv `
+
+`pip3 install -r requirements.txt `
 
 ## contribution
 For contribute see the CONTRIBUTION.md file
